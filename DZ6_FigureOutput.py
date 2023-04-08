@@ -6,6 +6,5 @@ i = 1
 j = 1
 
 for i in range(height):
-    print((symbol+" ")*width,end="")
-    print()
+    print(symbol*width)
     i += 1
