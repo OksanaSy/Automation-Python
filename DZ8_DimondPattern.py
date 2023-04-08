@@ -11,7 +11,7 @@ else:
     if ((maxWidth - minWidth) % 2) != 0:
         print("The difference between maxWidth and minWidth must be a multiple of 2!!!")
     else:
-        print(" "*outSpace, "*"*minWidth, " "*outSpace, sep="")
+        print(" "*outSpace, "*"*minWidth, sep="")
         while i < outSpace:
             print(" "*(outSpace-i), "*", " "*(minWidth+j), "*", sep="")
             i += 1
@@ -22,4 +22,4 @@ else:
             i -= 1
             j -= 2
 
-        print(" "*outSpace, "*"*minWidth, " "*outSpace, sep="")
+        print(" "*outSpace, "*"*minWidth, sep="")
