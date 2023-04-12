@@ -17,19 +17,14 @@
 """
 
 email = input('Enter email: ')
-pos1 = 0
-pos2 = 0
-
 if email.startswith("@") or email.endswith("."):
-    print("False")
-elif not "@" or not "." in email:
-    print("False")
-elif email.find('@') > email.find('.'):
-    print("False")
+   print("False")
 elif email.count('@') != 1 or email.count('.') != 1:
-    print("False")
+   print("False")
+elif email.find('@') > email.find('.'):
+   print("False")
 else:
-    print("True")
+   print("True")
 
 """
 sydoruk@gmail.com          True
