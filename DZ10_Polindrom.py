@@ -19,20 +19,20 @@
 #1
 
 word = input('Enter your frase: ')
-x = word.lower().lstrip().rstrip()
-if x == x[len(x)::-1]:
+x = word.lower().strip()
+if x == x[::-1]:
     print("True")
 else:
     print("False")
 
 """
 #2
-word = input("Enter your frase: ").lower().strip()
-val = True
-for front in range(0, len(word)):
-    for back in range(len(word), 0):
-        if word[front] != word[back]:
-            val = False
-print(val)
+str1 = input("Enter your frase: ").replace(" ", "")
+str1 = str1.lower()
+result = True
+for i in range(0, int(len(str1)/2)):
+    if str1[i] != str1[len(str1)-i-1]:
+        result = False
+        break
+print(result)
 """
-
