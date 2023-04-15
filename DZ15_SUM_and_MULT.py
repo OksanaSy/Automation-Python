@@ -14,12 +14,14 @@ min1 = int(input("Enter MIN: "))
 max1 = int(input("Enter MAX: "))
 sum_ = 0
 product = 1
-
+itr = 0
 for i in lst1:
     if max1 >= i >= min1:
         sum_ += i
         product *= i
-if sum_ == 0:
+    else:
+        itr += 1
+if itr == len(lst1):
     print("sum_ = 0, product = 0")
 else:
     print("sum_ = ", sum_, ", product = ", product)
