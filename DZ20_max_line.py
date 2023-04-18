@@ -12,6 +12,6 @@ maxLine = 0
 for x in f:
     if maxLine < len(x):
         maxLine = len(x)
-    res = x
+        res = x
 print(res)
 f.close()
