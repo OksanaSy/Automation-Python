@@ -36,14 +36,9 @@ for stg in raw:
         r3 = []
     d = {'age': r2, 'name': r1, 'phones': r3}
     data.append(d)
-json_object = json.dumps(data, indent=4)
 
 with open("users_out.json", "w") as outfile:
-    outfile.write(json_object)
-outfile.close()
-out = [*data]
+    json.dump(data, outfile, indent=4)
 with open('users_out.txt', 'w') as txtfile:
-    for line in out:
-        st = str(line['name']) + ';' + str(line['age']) + ';' + str(line['phones']) + '\n'
-        txtfile.write(st.replace('None', '').replace('[', '').replace(']', '').replace('\'', ''))
-txtfile.close()
+    for line in data:
+        txtfile.write(f"{line['name']};{str(line['age'] or '')};{str(','.join(line['phones']) or '')}\n")
