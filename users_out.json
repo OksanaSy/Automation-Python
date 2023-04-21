@@ -1,0 +1,39 @@
+[
+    {
+        "age": 34,
+        "name": "user1",
+        "phones": [
+            "+3804454545"
+        ]
+    },
+    {
+        "age": 23,
+        "name": "user2",
+        "phones": []
+    },
+    {
+        "age": null,
+        "name": "user3",
+        "phones": []
+    },
+    {
+        "age": null,
+        "name": "user4",
+        "phones": [
+            "+5635665335"
+        ]
+    },
+    {
+        "age": 25,
+        "name": "user5",
+        "phones": [
+            "+6563663",
+            "+3333635635"
+        ]
+    },
+    {
+        "age": null,
+        "name": "user6",
+        "phones": []
+    }
+]
