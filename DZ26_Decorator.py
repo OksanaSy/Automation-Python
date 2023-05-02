@@ -1,4 +1,3 @@
-
 """
 Написать декоратор skip, которым можно декорировать функции.
 
@@ -16,16 +15,19 @@ test_two_plus_two()  # Skipped because of JIRA-123 bug
 
 
 def skip(condition, reason=''):
-    def decorator_function(original):
-        original()
+    def wrapper_function(original_function):
+        def decorator_function():
+            if condition:
+                print(reason)
+            else:
+                original_function()
 
-    if condition:
-        print(reason)
-    else:
         return decorator_function
 
+    return wrapper_function
 
-@skip(condition=True, reason='Skipped because of JIRA-123 bug')
+
+@skip(condition=False, reason='Skipped because of JIRA-123 bug')
 def test_two_plus_two():
     assert 2 + 2 == 5
 
