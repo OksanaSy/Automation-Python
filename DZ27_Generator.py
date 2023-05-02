@@ -12,12 +12,12 @@ for i in generator(3, 4):
 
 
 def generator(m, n):
-    p, num, res = 1, 1, []
+    p, num = 1, 1
     for p in range(1, m+1):
         for num in range(1, n+1):
-            res.append(pow(num, p))
-    return res
+            yield pow(num, p)
 
 
 for i in generator(3, 4):
     print(i, end=" ")
+    
