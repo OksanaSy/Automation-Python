@@ -16,11 +16,11 @@ test_two_plus_two()  # Skipped because of JIRA-123 bug
 
 def skip(condition, reason=''):
     def wrapper_function(original_function):
-        def decorator_function():
+        def decorator_function(*args, **kwargs):
             if condition:
                 print(reason)
             else:
-                original_function()
+                original_function(*args, **kwargs)
 
         return decorator_function
 
