@@ -9,7 +9,7 @@ def get_random_string(length: int) -> str:
     res = ''
     for i in range(length):
         # 48-57 digits,65-90 upper case,97-122 lower case
-        num = random.choices([random.randrange(48, 57), random.randrange(65, 90), random.randrange(97, 122)],
+        num = random.choices([random.randint(48, 57), random.randint(65, 90), random.randint(97, 122)],
                              weights=[1, 1, 1])
         res += ''.join(chr(num[0]))
     return res
