@@ -22,18 +22,15 @@ assert custom_map(lambda x, y: x + y, [1, 2, 3, 4], (3, 4, 4, 4, 4, 4, 44)) == [
 
 def custom_map(function, *sequences):
     res = []
-    if len(sequences) == 1:
-        for seq in sequences:
-            for s in seq:
-                res.append(function(int(i) for i in s))
-    elif len(sequences)>1:
-        tmp=[]
-        for i in range(len(min(sequences, key=len))):
-            tmp.append([x[i] for x in sequences])
-        for i in tmp:
-            res.append(function(*i))
+    if len(sequences) > 0:
+        size = min(len(item) for item in sequences)
+        for i in range(size):
+            res.append(function(*[item[i] for item in sequences]))
     return res
 
 
 assert custom_map(sum, [[1, 2, 3], [4, 5]]) == [6, 9]
+assert custom_map(max, [[1, 2, 3], [4, 5]]) == [3, 5]
+assert custom_map(len, [[1, 2, 3], [4, 5]]) == [3, 2]
 assert custom_map(lambda x, y: x + y, [1, 2, 3, 4], (3, 4, 4, 4, 4, 4, 44)) == [4, 6, 7, 8]
+assert custom_map(min, [1, 5, 3, 4], (3, 4, 4, 4, 4, 4, 44)) == [1, 4, 3, 4]
