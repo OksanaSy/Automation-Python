@@ -30,11 +30,13 @@
 
 
 class Cat:
-    hungry = True
+    sound='mrrrrrrrrrrrr...'
 
     def __init__(self, fname, colour):
         self.fname = fname
         self.colour = colour
+        self.hungry = True
+
 
     def get_name(self):
         return self.fname
@@ -45,10 +47,14 @@ class Cat:
     def say_meow(self):  # котик каже мяв :)
         print(f"{self.fname} say MEOW")
 
-    @staticmethod  # основна котяча функція, на яку іде основна енергія і калорії :)
-    def do_nothing():
-        hungry = True
+    # основна котяча функція, на яку іде основна енергія і калорії :)
+    def do_nothing(self):
+        self.hungry = True
         print("Cat does nothing and become hungry!")
+
+    @staticmethod
+    def be_nice(): # демон-процес, сенсу не має
+        print(Cat.sound)
 
 
 class Home_Cat(Cat):
@@ -65,8 +71,8 @@ class Home_Cat(Cat):
         self.hungry = False
 
 
-class Clinic():
-    patients = []
+class Clinic:
+    patients = []  # БД спільна на клініки мережі
 
     def __init__(self, name, address):
         self.name = name
@@ -76,11 +82,11 @@ class Clinic():
         print(f"It's {self.name} clinic in {self.address}")
 
     def add_patient(self, cat):  # Додаємо пацієнтів в клініку (власником або волонтером)
-        try:
+        if isinstance(cat, Home_Cat):
             print(cat.get_owner(), " took ", cat.get_name(), "to clinic")
-        except Exception:
+        else:
             print(cat.get_name(), "sent to clinic by volonteers.")
-        self.patients.append(cat)
+        Clinic.patients.append(cat)
         print("Now in clinic:")
         for p in self.patients:
             print(p.get_name())
@@ -88,26 +94,28 @@ class Clinic():
 
 class Homeless_Cat(Cat):
 
-    def hunting(self):                                                        #Метод отримання енергії для вуличних котів :(
+    def hunting(self):  # Метод отримання енергії для вуличних котів :(
         print(self.fname, "is hunting.")
         self.hungry = False
         print("Hungry set to", self.hungry)
 
 
-VetClinic = Clinic("Health", "Sumy")
-VetClinic.print_data()
-Helha = Home_Cat('Helha', 'Gray')
-Helha.set_owner("Oksana")
-Tailless = Homeless_Cat('Tailless', 'Black')
-UnfamiliarCat = Cat(' - ', 'White')
-VetClinic.add_patient(Helha)                                                   #Додаємо пацієнта з домашніх котів
-VetClinic.add_patient(Tailless)                                                #Додаємо пацієнта з вуличних котів
-Helha.cry_for_food()
-Helha.do_nothing()
-Helha.cry_for_food()
-Tailless.hunting()
-Tailless.do_nothing()
-Tailless.hunting()
-Helha.say_meow()
+vetClinic = Clinic("Health", "Sumy")
+vetClinic.print_data()
+helha = Home_Cat('Helha', 'Gray')
+helha.set_owner("Oksana")
+tailless = Homeless_Cat('Tailless', 'Black')
+unfamiliarCat = Cat(' - ', 'White')
+vetClinic.add_patient(helha)  # Додаємо пацієнта з домашніх котів
+vetClinic.add_patient(tailless)  # Додаємо пацієнта з вуличних котів
+helha.cry_for_food()
+helha.do_nothing()
+helha.be_nice()
+helha.cry_for_food()
+tailless.hunting()
+tailless.do_nothing()
+tailless.be_nice()
+tailless.hunting()
+helha.say_meow()
 
-#Втомилася фантазувати :(
+# Втомилася фантазувати :(
