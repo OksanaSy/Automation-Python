@@ -7,7 +7,7 @@ class cacher:
         items = list(kwargs.keys())
         items.sort()
         sorted_items = {i: kwargs[i] for i in items}
-        key = str(args) + str(sorted_items)
+        key = str(sorted(args)) + str(sorted_items)
         if key in self.cache:
             return self.cache[key]
 
